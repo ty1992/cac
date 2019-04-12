@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <meta name="page-view-size" content="1920*1080">
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+         body {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            width: 1920px;
+            height: 1080px;
+            background: url(images/index-bg.png) no-repeat;
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body onLoad="init();" onUnload="exit();">
+    <div id="logo">
+        <img src="images/logo.png">
+    </div>
+    <div id="right-nav">
+        <div class="right-nav-item" id="right-nav-0"></div>
+        <div class="right-nav-item" id="right-nav-1"></div>
+        <div class="right-nav-item" id="right-nav-2"></div>
+    </div>
+    <div id="nav">
+        <div class="nav-item" id="nav-0">文创.商城</div>
+        <div class="nav-item" id="nav-1">经典.推荐</div>
+        <div class="nav-item" id="nav-2">人物.名家</div>
+        <div class="nav-item" id="nav-3">文玩.玩件</div>
+        <div class="nav-item" id="nav-4">故事.讲述</div>
+        <div class="nav-item" id="nav-5">名胜.云游</div>
+    </div>  
+    <div id="main"></div>
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/base.js"></script>
+<script src="js/event.js"></script>
+<script>
+
+var area = [
+    {id: 'right-nav-', index: 0},
+    {id: 'nav-', index: 0}
+]
+
+//页面加载
+function init(){
+    getPreFocus();
+    renderMain();
+}
+
+function getPreFocus() {
+    var url = window.location.href;
+    focusArea = parseInt(parent.Util.getURLParameter("focusArea", url) != "" ? parent.Util.getURLParameter("focusArea", url) : 1);
+    index = parseInt(parent.Util.getURLParameter("index", url) != "" ? parent.Util.getURLParameter("index", url) : 0);
+}
+
+
+//页面渲染
+function renderMain(){
+    var url = '';
+    switch(area[1].index){
+        case 0:
+            url = 'mall.html';
+            break;
+        case 1:
+            url = 'recommend.html';
+            break;
+        case 2:
+            url = 'person.html';
+            break;
+        case 3: 
+            url = 'wenwan.html';
+            break;
+        case 4:
+            url = 'story.html';
+            break;
+        case 5:
+            url = 'wander.html';
+            break;
+    }
+ 
+    if(url == '')return;
+
+    $.ajax({
+        url: url,
+        type: 'get',
+        success: function(data){
+            $('#main').html(data);
+            onFocus();
+        }
+    })
+}
+
+//落焦
+function onFocus() {    
+    $('#nav-' + area[1].index).addClass('mark');
+    $('#' + area[focusArea].id + area[focusArea].index).addClass('focus');
+}
+
+ //失焦
+function freeFocus() {
+    $('#nav-' + area[1].index).removeClass('mark');
+    $('#' + area[focusArea].id + area[focusArea].index).removeClass('focus');
+}
+
+</script>
+</html>

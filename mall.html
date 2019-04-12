@@ -1,0 +1,71 @@
+<div>
+    商城页面
+</div>
+
+
+<script>
+
+    function keyUp(){   
+        var index = area[focusArea].index;
+        freeFocus();
+        switch(focusArea){
+            case 1:
+                focusArea = 0;
+                break;
+        }
+        onFocus();
+    }
+
+    function keyDown(){
+        var index = area[focusArea].index;
+        freeFocus();
+        switch(focusArea){
+            case 0:
+                focusArea = 1;
+                break;
+        }
+        onFocus();
+    }
+
+    function keyLeft(){
+        var index = area[focusArea].index;
+        freeFocus();
+        switch(focusArea){
+            case 0:
+                if (index > 0) {
+                    area[focusArea].index--;
+                }
+                break;
+            case 1:
+                if (index > 0) {
+                    area[focusArea].index--;
+                    renderMain();
+                }
+                break;
+        }
+        onFocus();
+    }
+
+    function keyRight(){
+        var index = area[focusArea].index;
+        freeFocus();
+        switch(focusArea){
+            case 0:
+                index++;
+                if ($('#' + area[focusArea].id + index).length != 0) {
+                    area[focusArea].index++;
+                }
+                break;
+            case 1:
+                index++;
+                if ($('#' + area[focusArea].id + index).length != 0) {
+                    area[focusArea].index++;
+                    renderMain();
+                }
+                break;
+        }
+        onFocus();
+    }
+
+   
+</script>

@@ -1,0 +1,78 @@
+@charset "utf-8";
+#logo{
+    position: absolute;
+    top:47px;
+    left:114px;
+}
+#right-nav{
+    position: absolute;
+    right:109px;
+    top:51px;
+    width: 252px;
+    height:68px;
+    background: url(../images/right-nav.png) no-repeat center center;
+}
+#right-nav .right-nav-item{
+    position: absolute;
+    height:38px;
+    width:38px;
+    background-image: url(../images/right-nav-icon.png);
+    background-repeat: no-repeat;
+}
+#right-nav-0{
+    left:35px;
+    top:15px;
+}
+#right-nav-1{
+    left:100px;
+    top:14px;
+    background-position: 0 -38px;
+}
+#right-nav-2{
+    left:170px;
+    top:15px;
+    background-position: 0 -76px;
+}
+#right-nav-0.focus{
+    background-position: -38px 0;
+}
+#right-nav-1.focus{
+    background-position: -38px -38px;
+}
+#right-nav-2.focus{
+    background-position: -38px -76px;
+}
+#nav{
+    position: absolute;
+    left:0;
+    right:0;
+    top:150px;
+    font-size: 40px;
+    color:#e4e9ca;
+    letter-spacing: 5px;
+    text-align: center;
+}
+#nav .nav-item{
+    display: inline-block;
+    margin:0 10px;
+    height:58px;
+    line-height:54px;
+    width:262px;
+    text-align: center;
+}
+#nav .mark{
+    color:#d6cd6a;
+}
+#nav .focus{
+    background: url(../images/nav-focus.png) no-repeat center center;
+    color:#000000;
+}
+#main{
+    position: absolute;
+    height:860px;
+    width:100%;
+    top:210px;
+    overflow: hidden;
+    font-size:30px;
+    color:#fff;
+}
